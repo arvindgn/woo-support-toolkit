@@ -67,10 +67,10 @@ export function analyze(ordersInput, productsInput) {
     });
     return { order_index: orderIndex + 1, status, paid_date: paidDate ? 'recorded' : 'not_recorded', payment_verification: 'not_performed', download_permissions: 'not_checked', findings, items };
   });
-  return { schema_version: 1, tool_version: '0.1.0', order_count: results.length, scope: 'offline_snapshot_only', orders: results };
+  return { schema_version: 1, tool_version: '0.2.0', order_count: results.length, scope: 'offline_snapshot_only', orders: results };
 }
 export function renderText(report) {
-  const lines = ['Woo Support Toolkit 0.1.0', 'Offline snapshot only. Payment and download permissions are not verified.', `Orders: ${report.order_count}`];
+  const lines = ['Woo Support Toolkit 0.2.0', 'Offline snapshot only. Payment and download permissions are not verified.', `Orders: ${report.order_count}`];
   for (const order of report.orders) {
     lines.push(`Order ${order.order_index}: ${order.status}; paid date ${order.paid_date}`);
     for (const finding of order.findings) lines.push(`  ${finding}`);

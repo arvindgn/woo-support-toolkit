@@ -71,7 +71,7 @@ test('CLI handles stdin JSON, text, help, version, and invalid options', () => {
   assert.equal(JSON.parse(result.stdout).order_count, 1);
   assert.match(run(['--orders', '-'], JSON.stringify(order())).stdout, /Order 1: processing/);
   assert.match(run(['--help']).stdout, /Usage:/);
-  assert.equal(run(['--version']).stdout, '0.1.0\n');
+  assert.equal(run(['--version']).stdout, '0.2.0\n');
   for (const args of [[], ['--oops', 'private'], ['--orders', '-', '--format', 'csv'], ['--orders', '-', '--orders', '-']]) assert.equal(run(args).status, 2);
 });
 test('CLI errors never reflect parse excerpts or filenames', () => {
