@@ -4,16 +4,33 @@ A small, original, dependency-free offline-first CLI for support staff reviewing
 
 **Version 0.2.0.** This is a local triage aid, not a WooCommerce plugin, payment verifier, permission auditor, or automatic repair tool. It is not affiliated with WooCommerce. No adoption or compatibility certification is claimed.
 
+## Choose your workflow
+
+- **Triage an order export offline:** start with the synthetic examples below, then use your authorized local export.
+- **Learn support fundamentals without an API key:** use [`--learn`](#guided-learning-sessions).
+- **Request optional AI advice:** review the [data-sharing and cost notice](#optional-direct-openai-integration) before opting in.
+- **Resolve an error:** see [Troubleshooting](TROUBLESHOOTING.md), including input limits, model access, and safe offline fallback.
+
 ## Run locally
 
 Requires Node.js 22 or later. No dependency installation, API credentials, network access, or live store data is needed for offline triage and guided learning. Optional AI mode requires your own OpenAI API access.
+
+From a terminal with Git and Node installed, download the source and enter its directory:
+
+```sh
+git clone https://github.com/arvindgn/woo-support-toolkit.git
+cd woo-support-toolkit
+```
+
+Alternatively, download the source ZIP from this repository's **Code** menu, extract it, and open a terminal in the extracted folder. Run the following commands from the folder containing `package.json`. This guide runs the repository source directly; it does not require installing an npm package.
 
 ```sh
 node src/cli.js --orders examples/orders.synthetic.json
 node src/cli.js --orders examples/orders.synthetic.json --products examples/products.synthetic.json --format json
 node src/cli.js --orders - --format json < examples/orders.synthetic.json
-node --test
 ```
+
+The first two examples work in common shells. The stdin redirection example uses POSIX-style shell syntax; use `--orders FILE` directly if your shell handles redirection differently. In PowerShell or a POSIX-style shell, quote paths containing spaces, for example `--orders "local exports/orders.json"`. In Windows PowerShell, a Windows path such as `--orders "C:\Exports\orders.json"` is also suitable.
 
 All example data is synthetic. Use only exports you are authorized to access. Store actual exports outside this repository; never commit them or paste them into an issue.
 
@@ -104,5 +121,7 @@ npm run check
 ```
 
 Tests use Node's built-in test runner and synthetic fixtures. They cover conservative diagnostics, variation matching, deterministic output, free-text suppression, invalid shapes, resource limits, UTF-8 errors, CLI files/stdin, and fixed error messages, opt-in-only network behavior, AI response bounds, timeouts, and guided learning. Node 24 is the locally tested runtime; GitHub CI runs on Node 22 and 24. AI tests use mocked fetch responses, not live requests.
+
+For errors or unexpected findings, see [Troubleshooting](TROUBLESHOOTING.md).
 
 See [CONTRIBUTING.md](CONTRIBUTING.md), [SECURITY.md](SECURITY.md), and the [MIT license](LICENSE).

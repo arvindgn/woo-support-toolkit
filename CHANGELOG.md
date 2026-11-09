@@ -1,5 +1,11 @@
 # Changelog
 
+## Documentation improvements after 0.2.0
+
+- Add a workflow chooser, source-download instructions, and shell/path guidance.
+- Add error-code troubleshooting and a privacy-safe bug-report template.
+- No runtime, AI integration, security controls, or version changes. This documentation-only update was not tested; CI was intentionally skipped.
+
 ## 0.2.0
 
 - Add an explicit opt-in direct OpenAI Responses API adapter, configurable model, environment-only API key, fixed endpoint, no redirects/retries, bounded input/response, timeout and fixed errors.
