@@ -1,0 +1,13 @@
+node_modules/
+coverage/
+.env
+.env.*
+*.log
+exports/
+reports/
+*.csv
+*.json
+!package.json
+!examples/*.synthetic.json
+
+*.zip

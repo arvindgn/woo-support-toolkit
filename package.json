@@ -1,0 +1,11 @@
+{
+  "name": "woo-support-toolkit",
+  "version": "0.1.0",
+  "description": "Offline, allowlisted triage of WooCommerce REST order exports",
+  "type": "module",
+  "license": "MIT",
+  "engines": { "node": ">=22" },
+  "bin": { "woo-support": "src/cli.js" },
+  "scripts": { "test": "node --test", "check": "node --check src/cli.js && node --check src/analyze.js && node --test" },
+  "files": ["src", "README.md", "SECURITY.md", "LICENSE"]
+}
